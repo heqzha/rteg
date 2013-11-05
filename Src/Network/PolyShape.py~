@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+"""
+@file		PolyShape.py
+@author		Hequn Zhang
+@date		30-04-2013
+@version	0.1
+
+Definition of polygon shapes
+"""
+from __future__ import division
+import math
+
+class PolyPoint:
+	def __init__(self, iX, iY):
+		self.mX = iX
+		self.mY = iY
+
+class PolyShape:
+	def __init__(self, iVertex = 3, iRadius = 10):
+		self.mVertex = iVertex
+		self.mRadius = iRadius
+		self.mPoints = []
+	
+	def generate(self):
+		v = self.mVertex
+		r = self.mRadius
+		for i in range(0, v):
+			x = r * math.cos(i/n)
+
+	def getPoints(self):
+		return self.mPoints

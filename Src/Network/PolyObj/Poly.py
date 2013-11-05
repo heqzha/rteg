@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+"""
+@file		Poly.py
+@author		Hequn Zhang
+@date		30-04-2013
+@version	0.1
+
+Definition of polygons
+"""
+
+class Poly:
+	POLY_COLOR_RED = "1.00,0.00,0.00"
+	def __init__(self, iId, iColor, iShape, iFill = 1, iLayer = 0, iType = "building", iImgFile = None):
+		self.mId = iId
+		self.mColor = iColor
+		self.mShape = iShape
+		self.mFill = iFill
+		self.mLayer = iLayer
+		self.mType = iType
+		self.mImgFile = iImgFile
+
+	def getId(self):
+		return self.mId
+	
+	def getColor(self):
+		return self.mColor
+	
+	def getShape(self):
+		return self.mShape
+
+	def getFill(self):
+		return self.mFill
+
+	def getLayer(self):
+		return self.mLayer
+
+	def getType(self):
+		return self.mType
+
+	def getImgFile(self):
+		return self.mImgFile
+

@@ -1,0 +1,46 @@
+#!/usr/bin/env python
+"""
+@file		PolyGen.py
+@author		Hequn Zhang
+@date		30-04-2013
+@version	0.1
+
+Generate polygon
+"""
+from __future__ import division
+import math
+from PolyShape import PolyPoint
+from PolyShape import PolyShape
+
+class PolyGen:
+	def __init__(self):
+		self.mAllPoly = []
+
+	def genPoly(self, iPos, iVertex, iRadius):
+		oShape = PolyShape(iVertex, iRadius)
+		for i in range(0, oShape.mVertex * 2):
+			if i%2 != 0:
+				x =iPos.mX + oShape.mRadius * math.cos((i/oShape.mVertex)*math.pi)
+				y =iPos.mY + oShape.mRadius * math.sin((i/oShape.mVertex)*math.pi)
+				#print "x:%f y:%f" %(x,y)
+				oShape.mPoints.append(PolyPoint(x,y))
+		
+		return oShape
+
+	def genAllPoly(self, iCoord, iVertex, iRadius):
+
+		for p in iCoord:
+			self.mAllPoly.append(self.genPoly(p,iVertex, iRadius))
+		
+		return self.mAllPoly
+	
+	def genPoly(self,iCoord,iVertex,iRadius):
+		polys = []
+
+		for p in iCoord:
+			polys.append(self.genPoly(p,iVertex, iRadius))
+
+		return polys
+	
+	def getAllPoly(self):
+		return self.mAllPoly
