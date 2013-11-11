@@ -4,11 +4,11 @@ from Src.Network.GridNetwork import GridNetwork
 #from Src.Network.Obj.Edge import Edge
 from Src.PrintOut.PrintOutGridNetwork import PrintOutGridNetwork
 
-gNetwork = GridNetwork(2,2,1000,900)
+gNetwork = GridNetwork(2,2,1000)
 gNodeList = gNetwork.genGridNodes()
 gNetwork.genGridAdjArea(gNetwork.EDGE_TYPE_SECONDARY_URBAN)
-gNetwork.genVehicles()#TODO the number of vehicle should set at here
-#gNetwork.genPloys(4,600)
+gNetwork.genRoutes(900)
+gNetwork.genVehicles(900)
 gNetwork.genPolyGroup(4,3, 3.0)
 
 NetworkName = "GridNetwork"
@@ -23,7 +23,7 @@ printOut = PrintOutGridNetwork(NetworkName, PrintOutGridNetwork.FILE_TYPE_TYP, P
 printOut.printOutTypXml(gNetwork.getEdgeType())
 #Print out .rou.xml
 printOut = PrintOutGridNetwork(NetworkName, PrintOutGridNetwork.FILE_TYPE_ROU, PrintOutGridNetwork.FILE_SUFFIX_XML, PrintOutGridNetwork.TAG_ROUTES)
-printOut.printOutRouXml(gNetwork.getVehicleList(), gNetwork.getVehicleType())
+printOut.printOutRouXml(gNetwork.getVehicleList(), gNetwork.getVehicleType(), gNetwork.getRouteList())
 #Print out .poly.xml
 printOut = PrintOutGridNetwork(NetworkName, PrintOutGridNetwork.FILE_TYPE_POLY, PrintOutGridNetwork.FILE_SUFFIX_XML, PrintOutGridNetwork.TAG_SHAPES)
 printOut.printOutPolyXml(gNetwork.getPolyList())

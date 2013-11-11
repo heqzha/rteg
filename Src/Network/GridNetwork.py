@@ -31,13 +31,13 @@ class GridNetwork:
 	EDGE_TYPE_SECONDARY_URBAN = "secondary.urban"
 	EDGE_TYPE_SECONDARY_RURAL = "secondary.rural"
 
-	def __init__(self, iRow = 1, iCol = 1, iLength = 100.0, iNumVehicles = 0):
+	def __init__(self, iRow = 1, iCol = 1, iLength = 100.0):
 		self.mRow = iRow + 2
 		self.mCol = iCol + 2
 		self.mLength = iLength
-		self.mNumVehicles = iNumVehicles
 		self.mNodesArray = [[None for row in range(self.mCol)] for col in range(self.mRow)]
 		self.mNodesOrigDestList = []
+		self.mRouteList = []
 		self.mVehicleList = []
 		self.mPolyList = []
 		self.mCenter = Coord2D((self.mCol - 1) / 2, (self.mRow - 1) / 2)
@@ -135,21 +135,27 @@ class GridNetwork:
 							edge = Edge("edg_%i_%i_E" %(i, j), node, toNode,iEdgeType)
 							node.setAdjEdge(Node.ADJ_EDGES_EAST,edge)
 
-	def genVehicles(self):
+	def genRoutes(self, iNumRoutes):
 		path = PathPlanning(self.mNodesArray)
-		vTypeList = list(Vehicle.MAP_VEHICLE_TYPE.keys())
-		for i in range(self.mNumVehicles):
-			#Debug code:
-			#pdb.set_trace()
+		for i in range(iNumRoutes):	
 			#Get Random orig and destination
 			path.pickRandomOrigDest(self.mNodesOrigDestList)
 			#Generate Random Route
 			randEdges = path.randomPath()
-			randRoute = Route("rou_%i", randEdges)
+			route = Route("rou_%i" %(i), randEdges)
+			self.mRouteList.append(route)
+
+
+	def genVehicles(self, iNumVehicles):
+		path = PathPlanning(self.mNodesArray)
+		vTypeList = list(Vehicle.MAP_VEHICLE_TYPE.keys())
+		for i in range(iNumVehicles):
 			#Generate Random Vehicle Type
 			randType = random.choice(vTypeList)
 			random.shuffle(vTypeList)
-			self.mVehicleList.append(Vehicle("veh_%i" %(i),randType, randRoute, i))
+			randRoute = random.choice(self.mRouteList)
+			randRouteId  = randRoute.getId()
+			self.mVehicleList.append(Vehicle("veh_%i" %(i),randType, randRouteId, i))
 	
 	def getSpaceCenter(self, offsetY = None):
 		spaceCenter = []
@@ -222,3 +228,6 @@ class GridNetwork:
 
 	def getVehicleType(self):
 		return Vehicle.MAP_VEHICLE_TYPE
+
+	def getRouteList(self):
+		return self.mRouteList

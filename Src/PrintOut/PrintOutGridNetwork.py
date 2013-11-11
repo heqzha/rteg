@@ -116,7 +116,7 @@ class PrintOutGridNetwork:
 		self.mPrintOutHandle.printOut(self.mXmlEnd)
 		self.mPrintOutHandle.printOutEnd()
 
-	def printOutRouXml(self,iVehicleList, iVehicleType):
+	def printOutRouXml(self,iVehicleList, iVehicleType, iRouteList):
 		self.mPrintOutHandle.printOut(self.mXmlHead)
 		#Vehicle Type (with car-following model)
 		for i in iVehicleType:
@@ -174,7 +174,22 @@ class PrintOutGridNetwork:
 						outStr += ' guiShape = "%s"'	%(vType.getGuiShape())
 					outStr += "		/>"
 					self.mPrintOutHandle.printOut(outStr)
-		#Vehicle and Route
+		#Routes
+		for r in iRouteList:
+			outStr = None			
+			if(r.getId() is not None and r.getEdges() is not None):
+				outStr = '		<%s' %(PrintOutGridNetwork.TAG_ROUTE)
+				outStr += '	id = "%s"' %(r.getId())
+				outStr +=  ' edges ="'
+				for edge in r.getEdges():
+					outStr += '%s ' %(edge.getId())
+				outStr += '"'
+				if (r.getColor() is not None):
+					outStr += ' color = "%s"' %(r.getColor())
+				outStr += '	/>'
+				self.mPrintOutHandle.printOut(outStr)
+
+		#Vehicles
 		for v in iVehicleList:
 			outStr = None
 			if (v.getId() is not None and v.getType() is not None and v.getRoute() is not None and v.getDepart() is not None):
@@ -182,6 +197,7 @@ class PrintOutGridNetwork:
 				outStr = '		<%s' %(PrintOutGridNetwork.TAG_VEHICLE)
 				outStr += ' id = "%s"' %(v.getId())
 				outStr += ' type = "%s"' %(v.getType().getId())
+				outStr += ' route = "%s"' %(v.getRoute())
 				outStr += ' depart = "%f"' %(v.getDepart())
 			#Debug Code
 			#pdb.set_trace()	
@@ -199,22 +215,7 @@ class PrintOutGridNetwork:
 				outStr += ' arrivalPos = "%s"' %(v.getArrivalPos())
 			if (v.getArrivalSpeed() is not None):
 				outStr += ' arrivalSpeed = "%s"' %(v.getArrivalSpeed())
-			
-			outStr += ' >'
-			self.mPrintOutHandle.printOut(outStr)
-			#Route
-			if (v.getRoute() is not None):
-				route = v.getRoute()
-				outStr = "				<%s" %(PrintOutGridNetwork.TAG_ROUTE)
-				outStr +=  ' edges ="'
-				for edge in route.getEdges():
-					outStr += '%s ' %(edge.getId())
-				outStr += '"'
-				if (route.getColor() is not None):
-					outStr += ' color = "%s"' %(route.getColor())
-				outStr += '		/>'
-				self.mPrintOutHandle.printOut(outStr)
-			outStr = '		</%s>' %(PrintOutGridNetwork.TAG_VEHICLE)
+			outStr += ' />'
 			self.mPrintOutHandle.printOut(outStr)
 		self.mPrintOutHandle.printOut(self.mXmlEnd)
 		self.mPrintOutHandle.printOutEnd()
