@@ -4,7 +4,7 @@ from Src.Network.GridNetwork import GridNetwork
 #from Src.Network.Obj.Edge import Edge
 from Src.PrintOut.PrintOutGridNetwork import PrintOutGridNetwork
 
-gNetwork = GridNetwork(2,2,666)
+gNetwork = GridNetwork(3,3,500)
 gNodeList = gNetwork.genGridNodes()
 gNetwork.genGridAdjArea(gNetwork.EDGE_TYPE_SECONDARY_URBAN)
 gNetwork.genRoutes(400)
