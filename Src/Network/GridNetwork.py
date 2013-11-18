@@ -201,7 +201,8 @@ class GridNetwork:
 			return
 		spaceCenter = self.getSpaceCenter(self.mRow - 1)
 		polyShape = PolyGen()
-		radius = ((math.sqrt(2)*self.mLength) / numPoly) / interval
+		#radius = ((math.sqrt(2)*self.mLength) / numPoly) / interval
+		radius = math.sqrt(2)*((self.mLength / numPoly) - interval * 2.0) / 2.0
 		for sc in spaceCenter:	
 			subSc = self.getSubSpaceCenter(numPoly, numPoly, sc, self.mLength)
 			subPolys = polyShape.genAllPoly(subSc, iVertex, radius)

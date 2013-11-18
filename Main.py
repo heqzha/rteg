@@ -7,9 +7,9 @@ from Src.PrintOut.PrintOutGridNetwork import PrintOutGridNetwork
 gNetwork = GridNetwork(2,2,666)
 gNodeList = gNetwork.genGridNodes()
 gNetwork.genGridAdjArea(gNetwork.EDGE_TYPE_SECONDARY_URBAN)
-gNetwork.genRoutes(600)
-gNetwork.genVehicles(600)
-gNetwork.genPolyGroup(4,3, 3.0)
+gNetwork.genRoutes(400)
+gNetwork.genVehicles(400)
+gNetwork.genPolyGroup(4,3, 20.0)
 
 NetworkName = "GridNetwork"
 #Print out .nod.xml
