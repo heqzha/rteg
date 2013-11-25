@@ -170,12 +170,15 @@ class PrintOutGridNetwork:
 						outStr += ' length = "%f"'		%(vType.getLength())
 					if (vType.getMaxSpeed() is not None):
 						outStr += ' maxSpeed = "%f"'	%(vType.getMaxSpeed())
+					if (vType.getSpeedFactor() is not None):
+						outStr += ' speedFactor = "%f"'  %(vType.getSpeedFactor())
+					if (vType.getSpeedDev() is not None):
+						outStr += ' speedDev = "%f"'     %(vType.getSpeedDev())
 					if (vType.getGuiShape() is not None):
 						outStr += ' guiShape = "%s"'	%(vType.getGuiShape())
 					outStr += "		/>"
 					self.mPrintOutHandle.printOut(outStr)
 		#Routes
-		print "%s" %(len(iRouteList))
 		for r in iRouteList:
 			outStr = None			
 			if(r.getId() is not None and r.getEdges() is not None):

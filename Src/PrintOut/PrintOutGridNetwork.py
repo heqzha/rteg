@@ -142,6 +142,10 @@ class PrintOutGridNetwork:
 						outStr += ' minGap = "%f"' %(carFollow.getMinGap())
 					if (carFollow.getSigma() is not None):
 						outStr += ' sigma = "%f"' %(carFollow.getSigma())
+					if (vType.getSpeedFactor() is not None):
+						outStr += ' speedFactor = "%f"'  %(vType.getSpeedFactor())
+					if (vType.getSpeedDev() is not None):
+						outStr += ' speedDev = "%f"'     %(vType.getSpeedDev())					
 					if (carFollow.getTau() is not None):
 						outStr += ' tau = "%f"' %(carFollow.getTau())
 					if (carFollow.getTimeHeadWay is not None):
@@ -170,6 +174,10 @@ class PrintOutGridNetwork:
 						outStr += ' length = "%f"'		%(vType.getLength())
 					if (vType.getMaxSpeed() is not None):
 						outStr += ' maxSpeed = "%f"'	%(vType.getMaxSpeed())
+					if (vType.getSpeedFactor() is not None):
+						outStr += ' speedFactor = "%f"'  %(vType.getSpeedFactor())
+					if (vType.getSpeedDev() is not None):
+						outStr += ' speedDev = "%f"'     %(vType.getSpeedDev())
 					if (vType.getGuiShape() is not None):
 						outStr += ' guiShape = "%s"'	%(vType.getGuiShape())
 					outStr += "		/>"

@@ -87,7 +87,7 @@ class VehicleType:
 	#ex. CAR_FOLLOW_PLATOON
 	}
 
-	def __init__(self, iId, iAccel, iDecel, iSigma = 0.5, iColor = None, iLength = None, iMinGap = None, iMaxSpeed = None, iGuiShape = None, iCarFollow = None, iTau = None, iSpeedFactor = 1.0, iSpeedDev = 0.1, iVClass = None, iEmissionClass = None, iWidth = None, iImgFile = None):
+	def __init__(self, iId, iAccel, iDecel, iSigma = 0.5, iColor = None, iLength = None, iMinGap = None, iMaxSpeed = None, iGuiShape = None, iCarFollow = None, iTau = None, iSpeedFactor = 0.1, iSpeedDev = None, iVClass = None, iEmissionClass = None, iWidth = None, iImgFile = None):
 		self.mId = iId
 		self.mCarFollow = self.setCarFollow(iCarFollow)
 		
