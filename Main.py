@@ -7,9 +7,9 @@ from Src.PrintOut.PrintOutGridNetwork import PrintOutGridNetwork
 gNetwork = GridNetwork(3,3,500)
 gNodeList = gNetwork.genGridNodes()
 gNetwork.genGridAdjArea(gNetwork.EDGE_TYPE_SECONDARY_URBAN)
-gNetwork.genRoutes(600)
-gNetwork.genVehicles(600)#200/400/600
-gNetwork.genPolyGroup(4,3, 20.0)#10/20/30 -> 20(low building road density)/40(medium building road density)/60(higth building road density)
+gNetwork.genRoutes(400)
+gNetwork.genVehicles(400)#200/300/400/500/600
+gNetwork.genPolyGroup(4,3, 25.0)#10/15/20/25/30 -> 20(low building road density)/40(medium building road density)/60(higth building road density)
 
 NetworkName = "GridNetwork"
 #Print out .nod.xml
