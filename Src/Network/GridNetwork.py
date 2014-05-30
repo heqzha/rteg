@@ -195,7 +195,19 @@ class GridNetwork:
 				subCenter = Coord2D(x*length + spaceCenter.mX, y*length + spaceCenter.mY)
 				subSpaceCenter.append(subCenter)
 		return subSpaceCenter
-	
+
+	def genPloy(self, iVertex, interval):
+		radius = math.sqrt(2)*(self.mLength - interval * 2.0) / 2.0
+		
+		spaceCenter = self.getSpaceCenter(self.mRow - 1)
+		polyShape = PolyGen()
+		allPolyShape = polyShape.genAllPoly(spaceCenter, iVertex, radius)
+		for i in range(0, len(allPolyShape)):
+			pId = "poly_%d" %(i)
+			color = Poly.POLY_COLOR_RED
+			shapes = allPolyShape[i].getPoints()
+			self.mPolyList.append(Poly(pId, color, shapes))
+
 	def genPolyGroup(self, iVertex, numPoly, interval):
 		if(numPoly == 0):
 			return

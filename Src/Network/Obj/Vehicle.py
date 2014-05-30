@@ -10,9 +10,9 @@ Definition of vehicles
 from VehicleType import VehicleType
 
 class Vehicle:
-	VEHICLE_TYPE_PRIVATE	= "private"
+	VEHICLE_TYPE_PRIVATE	= "passenger"
 	VEHICLE_TYPE_TRANSPORT	= "transport"
-	VEHICLE_TYPE_BUS				= "bus"
+	VEHICLE_TYPE_BUS	= "bus"
 	VEHICLE_TYPE_EMERGENCY	= "emergency"
 
 	VEHICLE_TYPE_PASSENGER_COLOR	= "1,1,0" #yellow
