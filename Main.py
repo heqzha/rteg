@@ -10,7 +10,7 @@ gNetwork.genGridAdjArea(gNetwork.EDGE_TYPE_SECONDARY_URBAN)
 gNetwork.genRoutes(450)
 gNetwork.genVehicles(450)#200/300/400/500/600
 #gNetwork.genPolyGroup(4,3, 20.0)#10/15/20/25/30 -> 20(low building road density)/40(medium building road density)/60(higth building road density)
-gNetwork.genPloy(4, 20.0)
+gNetwork.genPloy(4, 35.0)
 
 NetworkName = "GridNetwork"
 #Print out .nod.xml
