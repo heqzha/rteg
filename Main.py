@@ -4,13 +4,13 @@ from Src.Network.GridNetwork import GridNetwork
 #from Src.Network.Obj.Edge import Edge
 from Src.PrintOut.PrintOutGridNetwork import PrintOutGridNetwork
 
-gNetwork = GridNetwork(5,5,250)
+gNetwork = GridNetwork(4,4,200)#(row, column, length of block)
 gNodeList = gNetwork.genGridNodes()
 gNetwork.genGridAdjArea(gNetwork.EDGE_TYPE_SECONDARY_URBAN)
-gNetwork.genRoutes(450)
-gNetwork.genVehicles(450)#200/300/400/500/600
+gNetwork.genRoutes(200)#(number of routes)
+gNetwork.genVehicles(200)#(number of vehicle: vehicle density * city size) 
 #gNetwork.genPolyGroup(4,3, 20.0)#10/15/20/25/30 -> 20(low building road density)/40(medium building road density)/60(higth building road density)
-gNetwork.genPloy(4, 35.0)
+gNetwork.genPloy(4, 7.0)
 
 NetworkName = "GridNetwork"
 #Print out .nod.xml
